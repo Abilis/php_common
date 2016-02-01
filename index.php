@@ -1,206 +1,193 @@
 <?php
-//1 задание
-echo '1 задание:'.'<br>';
-$str_var = 'Строковая переменная'; //строковая переменная
-echo $str_var;
-echo '<br>';
+echo '1 задание. Обычное ветвление.<br>';
+$a = 18;
+$b = 44;
 
-$intA = 5;
-echo $intA; //челое число
+if (($a >= 0) && ($b >= 0)) {
+    echo 'Сумма: ' . ($a + $b);
+}
+elseif (($a < 0) && ($b < 0)) {
+    echo 'Разность: ' . ($a - $b);
+}
+else {
+    echo 'Произведение: ' . ($a * $b);
+}
 echo '<br>';
+echo '<br>';
+echo '2 задание. Здесь нужно использовать тернарный оператор.<br>';
 
-$floatB = 7.95; //дробное число
-echo $floatB; 
-echo '<br>';
+$c = ($a > $b) ? $a : $b;
+echo $c;
 
-define("MY_CONSTANT", 42); //константа
-echo MY_CONSTANT;
 echo '<br>';
+echo '<br>';
+echo '3 задание. Здесь нужно вывести список чисел от $a до 9 с помощью switch.<br>';
 
-$d = 078; //восьмеричное число
-echo $d;
-echo '<br>';
+$a = 6;
+switch ($a) {
+    case 0: 
+        echo '0<br>';
+    case 1: 
+        echo '1<br>';
+    case 2: 
+        echo '2<br>';
+    case 3: 
+        echo '3<br>';
+    case 4: 
+        echo '4<br>';    
+    case 5: 
+        echo '5<br>';
+    case 6: 
+        echo '6<br>';
+    case 7: 
+        echo '7<br>';
+    case 8: 
+        echo '8<br>';
+    case 9: 
+        echo '9<br>';
+        break;
+    default:
+        echo 'На вход поступило число не из диапазона :(';
+}
 
-$e = 0x7604; //шестнадцатеричное число
-echo $e;
 echo '<br>';
 echo '<br>';
+echo '4 задание. Здесь нужно реализовать все математические операции в виде функций с двумя параметрами.<br>';
 
-//2 задание. Переменные в двойных кавычках
-echo '2 задание:'.'<br>';
-$str_var = 'Строковая переменная';
-echo "$str_var";
-echo '<br>';
+function sum($a, $b) {
+    return ($a + $b);
+}
 
-$intA = 5;
-echo "$intA";
-echo '<br>';
+function raz($a, $b) {
+    return ($a - $b);
+}
 
-$floatB = 7.95;
-echo "$floatB";
-echo '<br>';
+function proiz($a, $b) {
+    return ($a * $b);
+}
 
-define("MY_CONSTANT2", 42);
-echo MY_CONSTANT2;
-echo '<br>';
+function chast($a, $b) {
+    return ($a / $b);
+}
 
-$d = 078; //восьмеричное число
-echo "$d";
-echo '<br>';
+//инициализируем переменные
+$a4 = 13; 
+$b4 = 5;
 
-$e = 0x7604; //шестнадцатеричное число
-echo "$e";
-echo '<br>';
-echo '<br>';
+$sum = sum($a4, $b4);
+$raz = raz($a4, $b4);
+$proiz = proiz($a4, $b4);
+$chast = chast($a4, $b4);
 
-//3 задание. Переменные в одинарных кавычках
-echo '3 задание:'.'<br>';
-$str_var = 'Строковая переменная';
-echo '$str_var';
-echo '<br>';
+echo 'Сумма ' .$a4 . ' и ' . $b4 . ': ' . $sum . '<br>';
+echo 'Разность ' .$a4 . ' и ' . $b4 . ': '  . $raz . '<br>';
+echo 'Произведение ' .$a4 . ' и ' . $b4 . ': '  . $proiz . '<br>';
+echo 'Частное ' .$a4 . ' и ' . $b4 . ': '  . $chast . '<br>';
 
-$intA = 5;
-echo '$intA';
 echo '<br>';
+echo '<br>';
+echo '5 задание. Здесь нужно реализовать функцию с тремя параметрами для математических операций.<br>';
 
-$floatB = 7.95;
-echo '$floatB';
-echo '<br>';
+function mathOperation ($a, $b, $operation) {
+    switch ($operation) {
+        case 'sum':
+            return sum($a, $b);
+            break;
+        case 'raz':
+            return raz($a, $b);
+            break;
+        case 'proiz':
+            return proiz($a, $b);
+            break;
+        case 'chast':
+            return chast($a, $b);
+            break;
+        default:
+            return 'this is not a math operation!';
+    }
+} 
+ 
+$mathOperation = 'chast';
+$result = mathOperation($a4, $b4, $mathOperation);
+echo $result;
 
-define("MY_CONSTANT3", 42);
-echo MY_CONSTANT3;
 echo '<br>';
+echo '<br>';
+echo '6 задание. Здесь нужно реализовать функцию для возведения в степень числа.<br>';
 
-$d = 078; //восьмеричное число
-echo '$d';
-echo '<br>';
+$a6 = 2;
+$n6 = 20;
 
-$e = 0x7604; //шестнадцатеричное число
-echo '$e';
-echo '<br>';
-echo '<br>';
+function step ($a, $n) {
+    if (($a > 0) && ($n > 0) && (is_int($a)) && (is_int($n))) {
+            if ($n == 1) {
+                return $a;
+            }
+            else {
+                $res = $a * step($a, ($n - 1));
+                return $res;
+            }
+    }
+    else {
+        echo "Не удалось вычислить $a в степени $n :(";
+    }
+        
+}
 
-//4 задание. Нужно вывести в восьмеричной системе числа от 010 до 020
-echo '4 задание:'.'<br>';
-echo 010;
-echo '<br>';
-echo 011;
-echo '<br>';
-echo 012;
-echo '<br>';
-echo 013;
-echo '<br>';
-echo 014;
-echo '<br>';
-echo 015;
-echo '<br>';
-echo 016;
-echo '<br>';
-echo 017;
-echo '<br>';
-echo 018;
-echo '<br>';
-echo 019;
-echo '<br>';
-echo 020;
-echo '<br>';
-echo '<br>';
+$res6 = step($a6, $n6);
+echo $res6;
 
-//5 задание. Нужно вывести в шестнадцатеричной системе числа от х0 до xF
-echo '5 задание:'.'<br>';
-echo 0x0;
-echo '<br>';
-echo 0x01;
-echo '<br>';
-echo 0x02;
-echo '<br>';
-echo 0x03;
-echo '<br>';
-echo 0x04;
-echo '<br>';
-echo 0x05;
-echo '<br>';
-echo 0x06;
-echo '<br>';
-echo 0x07;
-echo '<br>';
-echo 0x08;
-echo '<br>';
-echo 0x09;
-echo '<br>';
-echo 0xa;
-echo '<br>';
-echo 0xb;
-echo '<br>';
-echo 0xc;
-echo '<br>';
-echo 0xd;
-echo '<br>';
-echo 0xe;
-echo '<br>';
-echo 0xf;
-echo '<br>';
-echo '<br>';
 
-//6 задание. Нужно вывести на экран четверостишие
-echo '6 задание:'.'<br>';
-$str1 = 'Я помню чудное мгновенье:';
-$str2 = 'Передо мной явилась ты,';
-$str3 = 'Как мимолетное виденье,';
-$str4 = 'Как гений чистой красоты.';
-$str5 = '<i>А.С. Пушкин</i>';
-
-echo $str1.'<br>';
-echo $str2.'<br>';
-echo $str3.'<br>';
-echo $str4.'<br>';
-echo $str5.'<br>';
 echo '<br>';
 echo '<br>';
+echo '7 задание. 2 функции, вычисляющие максимальное и минимальное число. Если произведение чисел больше 100, но меньше 1000, то от большего отнять меньшее и показать. Если произведение чисел больше 1000, то произведение этих чисел разделить на большее из числел.<br>';
 
-//7 задание. Нужно сделать то же, что и в 6 задании, но с помощью только одного echo
-echo '7 задание:'.'<br>';
-echo $str1 . '<br>' . $str2 . ' <br>' . $str3 . '<br>' . $str4 . '<br>' . $str5 . '<br>';
+$a7 = 100;
+$b7 = 21;
+
+function maximum ($a, $b) {
+    if ($a > $b) {
+        return $a;
+    }
+    elseif ($a < $b) {
+        return $b;
+    }
+    else {
+        return $a;
+    }
+}
+
+function minimum ($a, $b) {
+    if ($a < $b) {
+        return $a;
+    }
+    elseif ($a > $b) {
+        return $b;
+    }
+    else {
+        return $a;
+    }
+}
+
+if ((($a7 * $b7) > 100) && (($a7 * $b7) < 1000)) {
+    $res7 = maximum($a7, $b7) - minimum($a7, $b7);
+    }
+elseif (($a7 * $b7) > 1000) {
+    $res7 = ($a7 * $b7) / maximum($a7, $b7);
+}
+else {
+    $res = 'Результат не вычисляется :(';
+    echo 'Что-то пошло не так :(';
+}
 echo '<br>';
+echo 'Первое число: ' . $a7;
 echo '<br>';
-
-//8 задание. Нужно сложить  разные типы.
-echo '8 задание:'.'<br>';
-$a8 = 'Привет, ';
-$b8 = 18;
-$c8 = $a8 + $b8;
-echo $c8;
-/*Получилось 18. Очевидно, это из-за того, что при попытке преобразовать строку в цисло PHP получил нуль,
-который успешно прибавил к числу 18*/
+echo 'Второе число: ' . $b7;
 echo '<br>';
+echo 'Максимальное число: ' . maximum($a7, $b7);
 echo '<br>';
-
-//9 задание. Нужно дать ответ на вопрос, как работает оператор xor
-echo '9 задание:'.'<br>';
-$a0 = 0;
-$a1 = 1;
-$b0 = 0;
-$b1 = 1;
-
-$c00 = ($a0 xor $b0);
-$c01 = ($a0 xor $b1);
-$c10 = ($a1 xor $b0);
-$c11 = ($a1 xor $b1);
-
-echo (int)$c00.'<br>';
-echo (int)$c01.'<br>';
-echo (int)$c10.'<br>';
-echo (int)$c11.'<br>';
-
-/*Получилось 0 1 1 0. Это сложение по модулю 2. Это значит. что результат истинен,
-если истинен один из операторов, но не оба. Выходит, что о $a xor $a будет афдыу для любых $a*/
+echo 'Произведение чисел: ' . ($a7 * $b7);
 echo '<br>';
-echo '<br>';
-
-$a = true;
-
-$c = ($a xor $a);
-echo (int)$c;
-//Так и вышло
+echo $res7;
 
 ?>
