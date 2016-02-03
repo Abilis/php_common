@@ -2,8 +2,9 @@
 //Функция обработки результата
 function show_result($a, $b) {
     $result = $a + $b;
-    echo $a .' + ' . $b . ' = ' . $result . '<br><br>';
-    echo '<a href="sum.php">Хочу суммировать еще<a/>';
+//    echo $a .' + ' . $b . ' = ' . $result . '<br><br>';
+    return $result;
+//    echo '<a href="sum.php">Хочу суммировать еще<a/>';
     
 }
 
@@ -11,10 +12,25 @@ function show_result($a, $b) {
 function show_form() {
     
     echo    '<form action="sum.php" method="post">';
-    echo    '<input type="text" name="a" />';
+        if (isset($_POST['a'])) {
+            echo    '<input type="text" name="a" value=' . $_POST['a'] . '>';
+        }
+        else {
+            echo    '<input type="text" name="a" />';
+        }
     echo    '  +  ';
-    echo    '<input type="text" name="b" />';
-    echo    '<input type="submit" value=" = " />';            
+        if (isset($_POST['b'])) {
+            echo    '<input type="text" name="b" value=' . $_POST['b'] . '>';
+        }
+        else {
+            echo    '<input type="text" name="b" />';
+        }
+            echo    '<input type="submit" value=" = " />';
+        
+
+        if (isset($_POST['a']) && (isset($_POST['b']))) {
+            echo    '<b>' . show_result($_POST['a'], $_POST['b']) . '</b>';
+        }    
     echo    '</form>';    
     
 }
@@ -22,12 +38,17 @@ function show_form() {
 
 //Точка входа
 
+$result = '';
+show_form();
+
 //Показываем результат операции или форму ввода
-if (isset($_POST['a']) && (isset($_POST['b']))) {
+/*if (isset($_POST['a']) && (isset($_POST['b']))) {
     show_result($_POST['a'], $_POST['b']);
 }
 else {
     show_form();
-}
+}*/
+
+// value="$_POST['a']
 
 ?>
