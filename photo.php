@@ -1,0 +1,1 @@
+<img src = 'img/<?=$_GET['id'];?>.jpg' />
