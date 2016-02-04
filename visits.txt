@@ -1,0 +1,51 @@
+2016-02-04 21:03:20
+::1
+http://localhost/example/visits.php
+2016-02-04 21:05:39
+::1
+http://localhost/example/visits.php
+2016-02-04 21:05:41
+::1
+http://localhost/example/site1.html
+2016-02-04 21:05:43
+::1
+http://localhost/example/site2.html
+2016-02-04 21:15:12
+::1
+http://localhost/example/visits.php
+2016-02-04 21:15:15
+::1
+http://localhost/example/visits.php
+2016-02-04 21:15:15
+::1
+http://localhost/example/visits.php
+2016-02-04 21:15:17
+::1
+http://localhost/example/site1.html
+2016-02-04 21:15:28
+::1
+http://localhost/example/visits.php
+2016-02-04 21:15:30
+::1
+Адрес был указан вручную
+2016-02-04 21:15:32
+::1
+Адрес был указан вручную
+2016-02-04 21:15:33
+::1
+Адрес был указан вручную
+2016-02-04 21:15:36
+::1
+http://localhost/example/visits.php
+2016-02-04 21:15:38
+::1
+http://localhost/example/site2.html
+2016-02-04 21:15:40
+::1
+http://localhost/example/site1.html
+2016-02-04 21:15:43
+::1
+http://localhost/example/visits.php
+2016-02-04 21:15:44
+::1
+http://localhost/example/visits.php
