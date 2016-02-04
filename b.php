@@ -7,6 +7,11 @@ require "functions.php";
 //Запоминаем страницу в сессии
 $_SESSION['page'] = 'b.php';
 
+//Запоминаем в куках если было выбрано "запомнить меня"
+if ($_SESSION['remember'] === "on") {
+    setcookie('page', 'b.php', time() + 3600 * 24 * 7);
+}
+
 //Если в контексте сессии не установлено имя пользователя, пытаемся взять его из куков
 if(!isset($_SESSION['username']) && isset($_COOKIE['username'])) {
     $_SESSION['username'] = $_COOKEI['username'];
