@@ -1,26 +1,45 @@
 <?php
-if (!$_SERVER['HTTP_REFERER']) {
-    $_SERVER['HTTP_REFERER'] = 'Адрес был указан вручную';
-}
-
-//Запись в файл информации о посещении страницы
-$f = fopen('visits.txt', 'a+');
-fputs($f, date('Y-m-d G:i:s') . "\n");
-fwrite($f, $_SERVER['REMOTE_ADDR'] . "\n");
-fwrite($f, $_SERVER['HTTP_REFERER'] . "\n");
-fclose($f);
+require ('functions.php');
 ?>
 
 <html>
+
 <head>
-    <title>Сайт с журналом посещаемости</title>
+    <title>Галерея фотографий</title>
 </head>
 
 <body>
-<h2>Это главная страница сайта</h2>
-
-    <p>Мы <a href="visits.php">следим</a> за его посещаемостью!</p>
+<h1>Галерея фотографий</h1>    
     
-    <p>На нас ссылаются два сайта. <a href="site1.html">Раз.</a> <a href="site2.html">Два.</a></p>
+<?php
+    
+if (isset($_FILES['file'])) {
+    upload_file($_FILES['file']);
+  }  
+else {
+    print_form();
+    } 
+
+
+//Получаем список файлов в каталоге $dir    
+$dir_small = './img_small/';
+$dir = './img/';
+$files = list_files($dir_small);
+
+//Проходим по полученному массиву и гененируем по именам ссылки для картинок
+$n = count($files);
+
+for ($i = 2; $i < $n; $i++) {
+    $temp_img = $dir_small . $files[$i]; ?>
+    <a href="<?=$dir . $files[$i]?>"><img src="<?=$dir_small . $files[$i]?>"></a>
+    <?php echo ''; 
+}
+    
+    
+
+    
+
+?>
+
 </body>
 </html>
