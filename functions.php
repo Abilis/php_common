@@ -14,7 +14,7 @@ function login ($username, $remember) {
     
     //и в куках, если пользователь выставил галку "запомнить
     
-    if ($remember) {
+    if ($remember == 'on') {
         setcookie('username', $username, time() + 3600 * 24 * 7 );
     }
     
@@ -30,6 +30,9 @@ function logout() {
     
     //и сбрасываем сессию
     unset($_SESSION['username']);
+    unset($_SESSION['page']);
+    session_destroy(); // и уничтожаем ее. Это делать необязательно
+    
     
 }
 

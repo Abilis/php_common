@@ -9,14 +9,34 @@ session_start();
 $enter_site = false;
 
 //Когда пользователь попадает на сайт index.php, авторизация сбрасывается
-logout();
+//logout();
+//теперь этого не надо
+
+//надо поискать пользователя в сессии, а если в сессии не нашлось - в куках.
+//Если в контексте сессии не установлено имя пользователя, пытаемся взять его из куков
+if(!isset($_SESSION['username']) && isset($_COOKIE['username'])) {
+    $_SESSION['username'] = $_COOKEI['username'];
+}
+
+//Еще раз ищем пользователя в контексте сессии
+if (isset($_SESSION['username'])) {
+$username = $_SESSION['username'];
+}
+
+//Ищем, где был пользователь в последний раз. Если находим - перенаправляем туда
+
+if (isset($_SESSION['page'])) {
+    header("Location: " . $_SESSION['page']);
+    exit();
+}
 
 //Если массив $_POST не пуст, тогда обрабатываем отправку формы
 
-//var_dump($_POST['remember']);
-
 if (count($_POST) > 0) {
-    $enter_site = login($_POST['username'], $_POST['remember'] == 'on');
+    if (!isset($_POST['remember'])) { //борьба с надоедливым нотисом
+        $_POST['remember'] = 0;
+    }
+    $enter_site = login($_POST['username'], $_POST['remember']);
 }
 
 //Переадресуем авторизованного пользователя на закрытую страницу сайта
