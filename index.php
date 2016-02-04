@@ -25,8 +25,15 @@ $username = $_SESSION['username'];
 
 //Ищем, где был пользователь в последний раз. Если находим - перенаправляем туда
 
+//сначала ищем в сессии
 if (isset($_SESSION['page'])) {
     header("Location: " . $_SESSION['page']);
+    exit();
+}
+
+//если не нашли в сессии, ищем в куках
+if (isset($_COOKIE['page'])) {
+    header("Location: " . $_COOKIE['page']);
     exit();
 }
 
