@@ -31,6 +31,8 @@ function logout() {
     //и сбрасываем сессию
     unset($_SESSION['username']);
     unset($_SESSION['page']);
+    unset($_SESSION['yes']);
+    unset($_SESSION['123']);
     session_destroy(); // и уничтожаем ее. Это делать необязательно
     
     

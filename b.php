@@ -17,7 +17,7 @@ $username = $_SESSION['username'];
 
 //Если так ничего и не нашлось, то выкидываем пользователя на главную
 if ($username == null) {
-    logout();
+    logout(); //и уничтожаем сессию
     header("Location: index.php");
     exit();
 }
