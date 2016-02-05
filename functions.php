@@ -20,6 +20,20 @@ function upload_file($file) {
             echo 'Файл не выбран!<br /> <br />';
             return;
         }
+            
+        if ($file['size'] > '900000') {
+            echo 'Файл не может быть размером больше 900 Кб!<br /> <br />';
+            return;
+        }
+    
+        if (($file['type'] != 'image/png') && ($file['type'] != 'image/jpeg') && ($file['type'] != 'image/gif')) {
+            echo 'Можно загрузить только .gif, .jpeg или .png!<br /> <br />';
+            echo '<br />';
+            return;
+        }
+    
+    $types = array("", "gif", "jpeg", "png"); // Массив с типами изображений
+        
         
         if(copy($file['tmp_name'], './img/' . $file['name'])) {
             echo 'Файл успешно загружен!<br /> <br />';
