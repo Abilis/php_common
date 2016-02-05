@@ -1,5 +1,13 @@
 <?php
+error_reporting( E_ERROR );
+session_start();
 require ('functions.php');
+
+//Вывод сообщение о успешной загрузке после редиректа
+if($_SESSION['upload-file-sucsess'] == 'sucsess') {
+        echo 'Файл успешно загружен!<br /> <br />';
+        unset($_SESSION['upload-file-sucsess']);
+    }
 ?>
 
 <html>
@@ -14,7 +22,7 @@ require ('functions.php');
 <?php
     
 if (isset($_FILES['file'])) {
-    upload_file($_FILES['file']);
+    upload_file($_FILES['file']);      
   }  
 else {
     print_form();

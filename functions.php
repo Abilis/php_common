@@ -35,8 +35,8 @@ function upload_file($file) {
     $types = array("", "gif", "jpeg", "png"); // Массив с типами изображений
         
         
-        if(copy($file['tmp_name'], './img/' . $file['name'])) {
-            echo 'Файл успешно загружен!<br /> <br />';
+        if(copy($file['tmp_name'], './img/' . $file['name'])) {             
+//            echo 'Файл успешно загружен!<br /> <br />';
             copy($file['tmp_name'], './img_small/' . $file['name']);
             $pathfile = './img_small/' . $file['name'];
             resize($pathfile, 300); // Делаем ресайз            
@@ -45,7 +45,11 @@ function upload_file($file) {
             
         }
     
+    //Перенаправляемся на главную, чтобы нельзя было спамить через F5
+    $_SESSION['upload-file-sucsess'] = 'sucsess';
+    header("Location: index.php");
     
+        
 }
 
 
@@ -95,10 +99,9 @@ return $files;
     $img_o = imagecreatetruecolor($w_o, $h_o); // Создаём дескриптор для выходного изображения
     imagecopyresampled($img_o, $img_i, 0, 0, 0, 0, $w_o, $h_o, $w_i, $h_i); // Переносим изображение из исходного в выходное, масштабируя его
       
-    $func = 'image'.$ext; // Получаем функция для сохранения результата
+    $func = 'image'.$ext; // Получаем функцию для сохранения результата
     return $func($img_o, $image); // Сохраняем изображение в тот же файл, что и исходное, возвращая результат этой операции
   }
 
-  /* Вызываем функцию с целью уменьшить изображение до ширины в 100 пикселей, а высоту уменьшив пропорционально, чтобы не искажать изображение */ 
 
 ?>
