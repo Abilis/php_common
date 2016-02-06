@@ -1,12 +1,12 @@
 <?php
 
-function startup() {
+function database_connect() {
     
     //Настройки подключения к БД
     $hostname = 'localhost';
     $username = 'root';
     $password = '';
-    $dbName = 'chat';
+    $dbName = 'gal';
     
     //Языковая настройка
     setlocale(LC_ALL, 'ru_RU.CP1251');

@@ -10,7 +10,7 @@ function print_form() {
     echo '</form>';
 }
 
-//Функция вывода превьюшек
+//Функция загрузки файла
 function upload_file($file) {
 
         echo '<a href=index.php>Загрузить файл</a>';
@@ -36,10 +36,31 @@ function upload_file($file) {
         
         
         if(copy($file['tmp_name'], './img/' . $file['name'])) {             
-//            echo 'Файл успешно загружен!<br /> <br />';
+//            echo 'Файл успешно загружен!<br /> <br />';            
             copy($file['tmp_name'], './img_small/' . $file['name']);
             $pathfile = './img_small/' . $file['name'];
-            resize($pathfile, 300); // Делаем ресайз            
+            resize($pathfile, 300); // Делаем ресайз
+            
+            //делаем запись в БД
+            
+            //устанавливаем текущую дату
+            $dt_photo = date('Y-m-d G:i:s');
+            
+            //Пути и рейтинг
+            $path_full = './img/' . $file['name'];
+            $path_small = $pathfile; //чтобы меньше путаницы было
+            $ratio = 0; //при загрузке изображения рейтинг равен нулю
+            
+            //Формируем запрос            
+            $sql = "INSERT INTO photos (dt_photo, path_full, path_small, ratio) VALUES ('$dt_photo', '$path_full', '$path_small', '$ratio')";
+            
+            //Совершаем запрос
+            $result = mysql_query($sql);
+            
+            if (!$result) {
+                die(mysql_error());
+            }
+            
         }
         else {
             
@@ -66,7 +87,59 @@ if ($handle != false) {
 return $files;
 }
 
+//Функция для получения списка картинок с их путями, датой загрузки и рейтингом
+function photos_from_db() {
+    
+    //Формируем запрос. Сортировку делаем по рейтингу начиная с максимального
+    $sql = "SELECT * FROM photos ORDER BY ratio DESC";
+    $result = mysql_query($sql);
+    
+    if (!$result) {
+        die(mysql_errror());
+    }
+    
+    //Теперь получим все сообщения из БД и засунем в массив
+    $n = mysql_num_rows($result);
+    $arr = array();
+    
+    for ($i = 0; $i < $n; $i++) {
+        $row = mysql_fetch_assoc($result);
+        $arr[] = $row;
+    }
+    
+    return $arr;
+}
 
+//функция вытаскивания пути к полному размеру картинки по id картинки
+function photo_from_db($id) {
+    
+    //Формируем запрос
+    $sql = "SELECT path_full, ratio FROM photos WHERE id_photo = '$id'";
+    $result = mysql_query($sql);
+    
+    if (!$result) {
+        die(mysql_error());
+    }
+    
+    //Засунем сообщение из БД в массив
+    $arr[] = mysql_fetch_assoc($result);
+    
+    return $arr;
+    
+}
+
+//Функция увеличения количества просмотров на $m для фотографии с id $id_photo
+function add_ratio ($m, $id_photo) {
+    
+    //Формируем запрос
+    $sql = "UPDATE photos SET ratio = ratio + $m WHERE id_photo = $id_photo";
+    $result = mysql_query($sql);
+    
+    if (!$result) {
+        die(mysql_error());
+    }
+    
+}
 
 //Функция создания превьюшек
 /*

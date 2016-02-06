@@ -1,7 +1,10 @@
 <?php
 error_reporting( E_ERROR );
-session_start();
-require ('functions.php');
+
+require_once('functions.php');
+require_once('database.php');
+
+database_connect(); //Подключение к БД
 
 //Вывод сообщение о успешной загрузке после редиректа
 if($_SESSION['upload-file-sucsess'] == 'sucsess') {
@@ -28,6 +31,7 @@ else {
     print_form();
     } 
 
+/* Теперь реализация генерации превьюшек галереи будет сделана через БД. Сортировка будет по рейтингу
 
 //Получаем список файлов в каталоге $dir    
 $dir_small = './img_small/';
@@ -42,11 +46,21 @@ for ($i = 2; $i < $n; $i++) {
     <a href="<?=$dir . $files[$i]?>"><img src="<?=$dir_small . $files[$i]?>"></a>
     <?php echo ''; 
 }
-    
-    
-
+*/    
     
 
+//запускаем функцию, которая вытаскивает данные картинок из БД
+$arr_photos = photos_from_db();
+
+
+
+    
+foreach ($arr_photos as $photo) {?>
+    
+    <a href="photo.php?id=<?=$photo['id_photo']?>"><img src="<?=$photo['path_small']?>" /></a>
+    
+<?php }
+    
 ?>
 
 </body>
