@@ -8,9 +8,8 @@ if (!isset($_GET['id_article'])) {
 }
 
 //Формируем запрос
-
-$id_article = $_GET['id_article'];
-$sql = "UPDATE articles SET title = 'Измененный заголовок', content = 'Измененное содержимое статьи' WHERE id_article = $id_article";
+$id_article = mysql_real_escape_string($_GET['id_article']);
+$sql = "UPDATE articles SET title = 'Измененный заголовок', content = 'Измененное содержимое статьи' WHERE id_article = '$id_article'";
 
 //Выполняем запрос
 $result = mysql_query($sql);

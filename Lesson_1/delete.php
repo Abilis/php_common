@@ -8,9 +8,10 @@ if (!isset($_GET['id_article'])) {
 }
 
 //Формируем запрос
-
-$id_article = $_GET['id_article'];
-$sql = "DELETE FROM articles WHERE id_article = $id_article";
+$id_article = mysql_real_escape_string($_GET['id_article']);
+$sql = "DELETE FROM articles WHERE id_article = '$id_article'";
+echo $sql . '<br />';
+vardump($sql);
 
 //Выполняем запрос
 $result = mysql_query($sql);
