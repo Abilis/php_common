@@ -1,22 +1,22 @@
-<?php
+ï»¿<?php
 
 function startup()
 {
-	// Íàñòðîéêè ïîäêëþ÷åíèÿ ê ÁÄ.
+	// ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸ Ð¿Ð¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ñ Ðº Ð‘Ð”.
 	$hostname = 'localhost'; 
 	$username = 'root'; 
 	$password = '';
 	$dbName = 'test';
 	
-	// ßçûêîâàÿ íàñòðîéêà.
+	// Ð¯Ð·Ñ‹ÐºÐ¾Ð²Ð°Ñ Ð½Ð°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ°.
 	setlocale(LC_ALL, 'ru_RU.CP1251');	
 	
-	// Ïîäêëþ÷åíèå ê ÁÄ.
+	// ÐŸÐ¾Ð´ÐºÐ»ÑŽÑ‡ÐµÐ½Ð¸Ðµ Ðº Ð‘Ð”.
 	mysql_connect($hostname, $username, $password) or die('No connect with data base'); 
 	mysql_query('SET NAMES cp1251');
 	mysql_select_db($dbName) or die('No data base');
 
-	// Îòêðûòèå ñåññèè.
+	// ÐžÑ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ðµ ÑÐµÑÑÐ¸Ð¸.
 	session_start();
 		
 }
