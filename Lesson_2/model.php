@@ -5,7 +5,7 @@
 function articles_all()
 {
 	// Запрос.
-	$query = "SELECT * FROM articles ORDER BY id_article DESC";
+	$query = "SELECT * FROM articles ORDER BY dt_article DESC";
 	$result = mysql_query($query);
 							
 	if (!$result)
@@ -70,11 +70,14 @@ function articles_new($title, $content)
     $content = htmlspecialchars($content);
     
 	// Запрос.
-	$t = "INSERT INTO articles (title, content) VALUES ('%s', '%s')";
+    $dt_article = date('Y-m-j G:i:s');
+    
+	$t = "INSERT INTO articles (title, content, dt_article) VALUES ('%s', '%s', '%s')";
 	
 	$query = sprintf($t, 
 	                 mysql_real_escape_string($title),
-	                 mysql_real_escape_string($content));
+	                 mysql_real_escape_string($content),
+                     $dt_article);
 	
 	$result = mysql_query($query);
 							
@@ -87,8 +90,8 @@ function articles_new($title, $content)
 //
 // Изменить статью
 //
-function articles_edit($id_article, $title, $content)
-{
+function articles_edit($id_article, $title, $content) {
+    
 	//Подготовка
     $title = trim($title);
     $content = trim($content);
@@ -162,8 +165,7 @@ function articles_delete($id_article) {
 //
 function articles_intro($article)
 {
-	 // TODO
-	// $article - это ассоциативный массив, представляющий статью
+    // $article - это ассоциативный массив, представляющий статью
     $article['content'] = mb_substr($article['content'], 0, 500) . '...';
     return $article;    
 }

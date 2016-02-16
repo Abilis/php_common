@@ -31,9 +31,9 @@ content - текст
 
 		<?php foreach ($articles_intro as $article_intro): ?>
                 
-                <?=$article_intro['id_article']?> <br />
-        <h3><a href="article.php?id=<?=$article_intro['id_article']?>"><?=$article_intro['title']?></a></h3>
-        <br />
+                <i>Добавлено: <?=$article_intro['dt_article']?></i> <br />
+                <b><a href="article.php?id=<?=$article_intro['id_article']?>"><?=$article_intro['title']?></a></b>
+        <br /> <br />
                 <?=$article_intro['content']?>
                     <a href="article.php?id=<?=$article_intro['id_article']?>">Читать далее...</a>
         <br /> <br /> <br /> <br />
@@ -45,6 +45,6 @@ content - текст
         
 	</ul>
 	<hr/>
-	<small><a href="http://prog-school.ru">Школа Программирования</a> &copy;</small>			
+	<small><a href="http://php.net/manual/ru/">PHP</a> &copy;</small>			
 </body>
 </html>

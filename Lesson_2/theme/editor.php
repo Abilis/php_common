@@ -29,15 +29,16 @@ content - текст
         <br />
 		<?php foreach ($articles_intro as $article_intro): ?>
 			<li>
-				<a href="edit.php?id=<?=$article_intro['id_article']?>">
+				<i>Добавлено: <?=$article_intro['dt_article']?></i> <br />
+                <a href="edit.php?id=<?=$article_intro['id_article']?>">
 					<?=$article_intro['title']?></a> <small><a href="editor.php?id=<?=$article_intro['id_article']?>"><удалить></a></small>
 				
                 <br />
-                <?=$article_intro['content']?>... <br /><br />
+                <?=$article_intro['content']?> <br /><br />
 			</li>
 		<?php endforeach ?>
 	</ul>
 	<hr/>
-	<small><a href="http://prog-school.ru">Школа Программирования</a> &copy;</small>			
+	<small><a href="http://php.net/manual/ru/">PHP</a> &copy;</small>			
 </body>
 </html>

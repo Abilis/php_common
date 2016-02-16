@@ -15,7 +15,7 @@
 
 		
                 
-                <?=$article_current['id_article']?> <br />
+                <i>Добавлено: <?=$article_current['dt_article']?></i> <br />
                 <b><?=$article_current['title']?></b><br />
                 <p><?=$article_current['content']?></p>
                 <br /> <br />
@@ -27,6 +27,6 @@
         
 	</ul>
 	<hr/>
-	<small><a href="http://prog-school.ru">Школа Программирования</a> &copy;</small>			
+	<small><a href="http://php.net/manual/ru/">PHP</a> &copy;</small>			
 </body>
 </html>

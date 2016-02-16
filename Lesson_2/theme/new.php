@@ -32,6 +32,6 @@ $content - содержание
 		<input type="submit" value="Добавить" />
 	</form>
 	<hr/>
-	<small><a href="http://prog-school.ru">Школа Программирования</a> &copy;</small>			
+	<small><a href="http://php.net/manual/ru/">PHP</a> &copy;</small>			
 </body>
 </html>

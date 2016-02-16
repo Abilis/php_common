@@ -16,7 +16,9 @@
             Название:
 		<br/>
         <input type="hidden" name="id_article" value="<?=$article_current['id_article']?>" />
-		 
+            <input type="hidden" name="dt_article" value="<?=$article_current['dt_article']?>" />
+		<label><i>Добавлено: <?=$article_current['dt_article']?></i></label>
+		<br/>
 		<input type="text" name="title" value="<?=$article_current['title']?>" />
 		<br/>
 		<br/>
@@ -27,6 +29,6 @@
 		<input type="submit" value="Отредактировать" />
         </form>
 	<hr/>
-	<small><a href="http://prog-school.ru">Школа Программирования</a> &copy;</small>			
+	<small><a href="http://php.net/manual/ru/">PHP</a> &copy;</small>
 </body>
 </html>
