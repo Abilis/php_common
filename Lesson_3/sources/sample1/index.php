@@ -1,0 +1,1 @@
+<?php// Установка параметров шаблонов.$title = 'Главная';// Шапка.include 'v_header.php';// Содержание.include 'v_index.php';// Подвал.include 'v_footer.php';

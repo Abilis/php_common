@@ -1,0 +1,1 @@
+<?php// Установка параметров шаблонов.$title = 'Статья';$text = 'Текст статьи #' . $_GET['id'] . ' весьма инетесен.';// Шапка.include 'v_header.php';// Содержание.include 'v_article.php';// Подвал.include 'v_footer.php';

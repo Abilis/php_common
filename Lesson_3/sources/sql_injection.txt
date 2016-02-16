@@ -1,0 +1,26 @@
+$query = "SELECT * FROM articles WHERE id_article = '$id'";
+
+$id: 1
+SELECT * FROM articles WHERE id_article='1'
+
+$id: 1\'\;DELETE FROM articles\;--
+SELECT * FROM articles WHERE id_article='1';DELETE FROM articles;--'
+
+stripslashes();
+
+sprintf();
+mysql_real_escape_string();
+
+sprintf($t, $par1, $par2, $par3, ...);
+
+%s - строка
+%d - целое число
+%f - действительное число
+
+mysql_real_escape_string($string);
+
+$t = "SELECT * FROM users WHERE name = '%s' AND age > '%d'";
+
+$query = sprintf($t, 
+                 mysql_real_escape_string($name),
+				 $age);
