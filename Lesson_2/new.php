@@ -22,7 +22,7 @@ else
 }
 
 // Кодировка.
-header('Content-type: text/html; charset=windows-1251');
+header('Content-type: text/html; charset=utf-8');
 
 // Вывод в шаблон.
 include('theme/new.php');

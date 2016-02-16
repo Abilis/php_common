@@ -17,9 +17,10 @@ foreach ($articles as $article) {
     //сокращенный вариант статьи
 }
 
+// Кодировка.
+header('Content-type: text/html; charset=utf-8');
+
 //выводим в шаблон
 include('theme/index.php');
-
-
 
 ?>

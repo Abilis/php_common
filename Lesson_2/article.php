@@ -17,6 +17,9 @@ if (empty($_GET)) {
 //Запрос конкретной статьи
 $article_current = articles_get($_GET['id']);
 
+// Кодировка.
+header('Content-type: text/html; charset=utf-8');
+
 //вывод в шаблон
 include('theme/article.php');
 

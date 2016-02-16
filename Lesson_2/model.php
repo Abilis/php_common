@@ -79,7 +79,7 @@ function articles_new($title, $content)
 	$result = mysql_query($query);
 							
 	if (!$result)
-		die(mysql_error());
+		die('Не удалось добавить статью' . mysql_error());
 		
 	return true;
 }
@@ -89,7 +89,43 @@ function articles_new($title, $content)
 //
 function articles_edit($id_article, $title, $content)
 {
-	// TODO
+	//Подготовка
+    $title = trim($title);
+    $content = trim($content);
+    
+    $id_article = (int)$id_article;
+    
+    //Проверка
+    if (($title == '') || ($content == '')) {
+        return false;
+        die();        
+    }
+    
+    if (!is_int($id_article)) {
+        return false;
+        die;
+    }
+    
+        
+    //Экранируем html-теги
+    $title = htmlspecialchars($title);
+    $content = htmlspecialchars($content);
+    
+    //Формируем запрос
+    $t = "UPDATE articles SET title = '%s', content = '%s' WHERE id_article = '$id_article'";
+    
+    $query = sprintf($t,
+                    mysql_real_escape_string($title),
+                    mysql_real_escape_string($content));
+    
+    $result = mysql_query($query);
+        
+    if (!$result) {
+        die('Не удалось обновить статью с id =' . $id_article . mysql_error());
+    }
+    
+    return true;
+    
 }
 
 //
@@ -128,6 +164,6 @@ function articles_intro($article)
 {
 	 // TODO
 	// $article - это ассоциативный массив, представляющий статью
-    $article['content'] = mb_substr($article['content'], 0, 300) . '...';
+    $article['content'] = mb_substr($article['content'], 0, 500) . '...';
     return $article;    
 }
