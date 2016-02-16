@@ -166,6 +166,11 @@ function articles_delete($id_article) {
 function articles_intro($article)
 {
     // $article - это ассоциативный массив, представляющий статью
-    $article['content'] = mb_substr($article['content'], 0, 500) . '...';
-    return $article;    
+    if (mb_strlen($article['content']) > 500) {
+        $article['content'] = mb_substr($article['content'], 0, 500) . '...';
+        return $article;
+    }
+     else {
+        return $article;    
+     }
 }
