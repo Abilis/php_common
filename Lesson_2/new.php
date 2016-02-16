@@ -7,8 +7,7 @@ startup();
 
 // Обработка отправки формы.
 if (!empty($_POST)) {
-	if (articles_new($_POST['title'], $_POST['content']))
-	{
+	if (articles_new($_POST['title'], $_POST['content'])) {
 		header('Location: editor.php');
 		die();
 	}

@@ -7,7 +7,7 @@ require_once("model.php");
 startup();
 
 //извлечение аннотаций для статей
-$articles = articles_all(); //пока полные статьи
+$articles = articles_all(); //сначала достаем полные статьи
 
 //Обрабатываем полученный массив
 $articles_intro = array(); //создаем пустой масси массив
@@ -23,5 +23,3 @@ include('theme/index.php');
 
 
 ?>
-
-

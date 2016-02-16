@@ -27,11 +27,13 @@ content - текст
 			<b><a href="new.php">Новая статья</a></b>
 		</li>
         <br />
-		<?php foreach ($articles as $article): ?>
+		<?php foreach ($articles_intro as $article_intro): ?>
 			<li>
-				<a href="edit.php?id=<?=$article['id_article']?>">
-					<?=$article['title']?>
-				</a>
+				<a href="edit.php?id=<?=$article_intro['id_article']?>">
+					<?=$article_intro['title']?></a> <small><a href="editor.php?id=<?=$article_intro['id_article']?>"><удалить></a></small>
+				
+                <br />
+                <?=$article_intro['content']?>... <br /><br />
 			</li>
 		<?php endforeach ?>
 	</ul>

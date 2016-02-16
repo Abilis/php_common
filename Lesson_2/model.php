@@ -95,9 +95,30 @@ function articles_edit($id_article, $title, $content)
 //
 // Удалить статью
 //
-function articles_delete($id_article)
-{
-	// TODO
+function articles_delete($id_article) {
+	//Подготовка:
+    $id_article = (int)$id_article;
+    
+    //Если $id_article не число - редиректим на editor.php
+    if (!is_int($id_article)) {
+        header('editor.php');
+        die();
+    }
+    
+    //Формируем запрос
+    $t = "DELETE FROM articles WHERE id_article = '%d'";
+    
+   $query = sprintf($t, $id_article);
+    
+    //Выполняем запрос    
+    $result = mysql_query($query);
+    
+    if (!$result) {
+        die('Не удалось удалить статью ' . $id_article . ' ' . mysql_error());
+    }
+    
+    
+    return true;
 }
 
 //
